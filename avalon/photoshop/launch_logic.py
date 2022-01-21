@@ -294,6 +294,9 @@ class PhotoshopRoute(WebSocketRoute):
     async def publish_route(self):
         self._tool_route("publish")
 
+    async def studio_tools_route(self):
+        self._tool_route("studio_tools")
+
     async def sceneinventory_route(self):
         self._tool_route("sceneinventory")
 
@@ -306,7 +309,7 @@ class PhotoshopRoute(WebSocketRoute):
     def _tool_route(self, _tool_name):
         """The address accessed when clicking on the buttons."""
 
-        partial_method = functools.partial(show_tool_by_name, 
+        partial_method = functools.partial(show_tool_by_name,
                                            _tool_name)
 
         ProcessLauncher.execute_in_main_thread(partial_method)
